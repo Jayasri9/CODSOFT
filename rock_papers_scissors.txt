@@ -1,0 +1,41 @@
+import random
+count1=0
+count2=0
+def choices():
+    player_choice=input("Rock or Paper or Scissor?")
+    choice=["Rock","Paper","Scissor"]
+    opponent_choice=random.choice(choice)
+    return player_choice,opponent_choice
+def turn_result(player_choice,opponent_choice):
+    global count1,count2
+    if(player_choice==opponent_choice):
+        return "Tie game!!"
+    elif(player_choice=="Rock" and opponent_choice=="Scissor"):
+        count1+=1
+        return "player wins the round"
+    elif(player_choice=="Scissor" and opponent_choice=="Paper"):
+        count1+=1
+        return "Player wins the round"
+    elif(player_choice=="Paper" and opponent_choice=="Rock"):
+        count1+=1
+        return "Player wins the round"
+    else:
+        count2+=1
+        return "Opponent player wins"
+def actual_result():
+    while True:
+        player_choice, opponent_choice = choices()
+        result = turn_result(player_choice, opponent_choice)
+        print(result)
+        print(f"Player: {count1} - Opponent: {count2}")
+
+        play_again = input("Play again? (yes/no): ").strip().lower()
+        if play_again != "yes":
+            print("player score is:",count1)
+            break
+
+if __name__ == "__main__":
+    actual_result()
+
+
+
